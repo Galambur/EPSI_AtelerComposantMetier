@@ -29,21 +29,24 @@ X = data[['Departement']]
 y = data['Synthese_eval_sanit']
 
 ########## Modèle 2 : Support Vector Machine
+# Séparation des données en ensembles d'entraînement et de test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model = SVC(kernel='linear', random_state=42)  
+# Création et entraînement du modèle SVM
+model = SVC(kernel='linear', random_state=42)  # Utilisation d'un noyau linéaire
 model.fit(X_train, y_train)
 
-# Évaluation du modèle
+# Prédiction sur l'ensemble de test
 y_pred = model.predict(X_test)
+
+# Évaluation du modèle
 accuracy = accuracy_score(y_test, y_pred)
 print("Précision du modèle : {:.2f}%".format(accuracy * 100))
 
 
 
-#################### Test : Prédiction pour un fumeur
+#################### Test : Prédiction pour le département 25
 departement = 25
 prediction_departement = model.predict([[departement]])
-prediction_departement[0] = prediction_departement[0].map(synthese_eval_mapping)
 
 print("Prédiction pour le département ", departement, " :", prediction_departement[0])
