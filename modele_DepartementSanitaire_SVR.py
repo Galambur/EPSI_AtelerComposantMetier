@@ -30,7 +30,7 @@ y = data['Synthese_eval_sanit']
 
 ########## Modèle 2 : Support Vector Machine
 # Séparation des données en ensembles d'entraînement et de test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Création et entraînement du modèle SVM
 model = SVC(kernel='linear', random_state=42)  # Utilisation d'un noyau linéaire
